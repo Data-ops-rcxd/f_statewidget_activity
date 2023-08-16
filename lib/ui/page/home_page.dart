@@ -14,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double value = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,17 +22,39 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
           child: Column(
         children: [
           IconButton(
               onPressed: null, icon: Icon(Icons.refresh), key: Key('Refresh')),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[W1(), W2(), W3()],
+            children: <Widget>[
+              W1(
+                value: value,
+                add: sum,
+                remove: remove,
+              ),
+              W2(),
+              W3()
+            ],
           ),
         ],
       )),
     );
   }
+
+  void sum(double value) {
+     setState(() {
+      value += 0.1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+  }
+  void remove(double value) {
+     setState(() {
+      value -= 0.1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+  }
+  void changetext(String value) {}
 }
