@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../widget/w1.dart';
@@ -35,8 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 add: sum,
                 remove: remove,
               ),
-              W2(),
-              W3()
+              W2(
+                value: value,
+              ),
+              W3(
+                value: value,
+                add: sumplus,
+                remove: removeplus,
+              )
             ],
           ),
         ],
@@ -44,17 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void sum(double value) {
-     setState(() {
+  void sum() {
+    setState(() {
       value += 0.1;
       value = double.parse(value.toStringAsFixed(1));
     });
   }
-  void remove(double value) {
-     setState(() {
+
+  void remove() {
+    setState(() {
       value -= 0.1;
       value = double.parse(value.toStringAsFixed(1));
     });
   }
-  void changetext(String value) {}
+
+  void sumplus() {
+    setState(() {
+      value += 1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+  }
+
+  void removeplus() {
+    setState(() {
+      value -= 1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+  }
 }
